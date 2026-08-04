@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
-import { VercelRequest, VercelResponse } from '@vercel/node';
 import { GET_INITIAL_DATA } from '../src/initialData';
 
 dotenv.config();
@@ -11,7 +10,7 @@ const SUPABASE_SECRET = process.env.SUPABASE_SECRET_KEY;
 const hasSupabaseConfig = Boolean(SUPABASE_URL && SUPABASE_SECRET);
 const supabase = hasSupabaseConfig ? createClient(SUPABASE_URL as string, SUPABASE_SECRET as string) : null;
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: any, res: any) {
   if (!supabase) {
     console.error('Missing Supabase config in Vercel environment variables.');
     res.status(500).json({ error: 'Supabase configuration missing. Set SUPABASE_URL and SUPABASE_SECRET_KEY in Vercel.' });
@@ -40,10 +39,16 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     const upsertData = { id: 'singleton', data: req.body };
-    const { error } = await supabase.from('app_store').upsert(upsertData, { returning: 'minimal' });
-    if (error) {
-      console.error('Supabase POST error', error);
-      res.status(500).json({ error: error.message });
+    try {
+      const result: any = await (supabase as any).from('app_store').upsert(upsertData);
+      if (result.error) {
+        console.error('Supabase POST error', result.error);
+        res.status(500).json({ error: result.error.message || String(result.error) });
+        return;
+      }
+    } catch (err: any) {
+      console.error('Supabase POST exception', err);
+      res.status(500).json({ error: err?.message || String(err) });
       return;
     }
 

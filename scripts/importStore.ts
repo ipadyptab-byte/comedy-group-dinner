@@ -32,9 +32,9 @@ async function run() {
   }
 
   try {
-    const { error } = await supabase.from('app_store').upsert({ id: 'singleton', data: payload }, { returning: 'minimal' });
-    if (error) {
-      console.error('Supabase upsert error:', error);
+    const result: any = await (supabase as any).from('app_store').upsert({ id: 'singleton', data: payload });
+    if (result.error) {
+      console.error('Supabase upsert error:', result.error);
       process.exit(1);
     }
     console.log('Successfully upserted sample store into Supabase app_store (id=singleton)');

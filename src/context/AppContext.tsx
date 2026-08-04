@@ -72,9 +72,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       // Try client-side Supabase fetch first (if available)
       if (supabase) {
         try {
-          const { data, error } = await supabase.from('app_store').select('data').eq('id', 'singleton').limit(1).maybeSingle();
-          if (!error && data && (data as any).data) {
-            setData((data as any).data as InitialData);
+          const result: any = await (supabase as any).from('app_store').select('data').eq('id', 'singleton').limit(1).maybeSingle();
+          if (!result.error && result.data && (result.data as any).data) {
+            setData((result.data as any).data as InitialData);
             setIsLoading(false);
             return;
           }
@@ -132,9 +132,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     // Persist to Supabase (client) when available. Fallback to server API.
     if (supabase) {
       try {
-        const { error } = await supabase.from('app_store').upsert({ id: 'singleton', data: newData }, { returning: 'minimal' });
-        if (error) {
-          console.warn('Supabase client upsert error, falling back to API:', error);
+        const result: any = await (supabase as any).from('app_store').upsert({ id: 'singleton', data: newData });
+        if (result.error) {
+          console.warn('Supabase client upsert error, falling back to API:', result.error);
           await fetch('/api/store', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -531,8 +531,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     // Persist reset to Supabase if available, else call server reset
     if (supabase) {
       try {
-        const { error } = await supabase.from('app_store').upsert({ id: 'singleton', data: initial }, { returning: 'minimal' });
-        if (error) console.error('Supabase reset upsert error:', error);
+        const result: any = await (supabase as any).from('app_store').upsert({ id: 'singleton', data: initial });
+        if (result.error) console.error('Supabase reset upsert error:', result.error);
       } catch (err) {
         console.error('Supabase reset failed, calling server reset:', err);
         try {

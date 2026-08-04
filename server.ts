@@ -58,9 +58,11 @@ async function saveStore(data: InitialData) {
   if (supabase) {
     try {
       const payload = { id: 'singleton', data };
-      const { error } = await supabase.from('app_store').upsert(payload, { returning: 'minimal' });
-      if (error) {
-        console.warn('Supabase upsert error:', error);
+      try {
+        const result: any = await (supabase as any).from('app_store').upsert(payload);
+        if (result.error) console.warn('Supabase upsert error:', result.error);
+      } catch (err) {
+        console.warn('Supabase upsert exception:', err);
       }
     } catch (err) {
       console.warn('Supabase save failed, will save to disk as fallback:', err);
