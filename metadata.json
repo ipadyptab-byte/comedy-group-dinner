@@ -1,0 +1,8 @@
+{
+  "name": "Comedy Group Dinner & Party Planner",
+  "description": "Mobile-first PWA for Comedy Group (7 families / 28 members) to organize dinner events, RSVPs, food orders, live summaries, and WhatsApp sharing.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
