@@ -33,10 +33,36 @@ export default async function handler(req: any, res: any) {
   }
 
   if (req.method === 'POST') {
+    // Basic validation
     if (!req.body || typeof req.body !== 'object') {
       res.status(400).json({ error: 'Invalid store data' });
       return;
     }
+
+    // Check payload size to catch serverless limits
+    const contentLength = parseInt(req.headers['content-length'] || '0', 10) || 0;
+    let payloadSize = contentLength;
+    if (!payloadSize) {
+      try {
+        payloadSize = Buffer.byteLength(JSON.stringify(req.body), 'utf8');
+      } catch {
+        payloadSize = 0;
+      }
+    }
+
+    // If payload > 4.5MB, return 413 to indicate too large for Vercel function
+    const MAX_BYTES = 4_500_000;
+    if (payloadSize > MAX_BYTES) {
+      console.error('Payload too large for /api/store:', { payloadSize, contentLength, max: MAX_BYTES });
+      res.status(413).json({ error: 'Payload too large for serverless function', payloadSize, max: MAX_BYTES });
+      return;
+    }
+
+    // Log request metadata for debugging (do not log body contents)
+    console.info('POST /api/store headers:', {
+      'content-type': req.headers['content-type'],
+      'content-length': contentLength,
+    });
 
     const upsertData = { id: 'singleton', data: req.body };
     try {
