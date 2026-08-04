@@ -1,0 +1,848 @@
+{
+  "families": [
+    {
+      "id": "fam-1",
+      "name": "Sharma Family",
+      "code": "1001",
+      "adultsCount": 2,
+      "childrenCount": 2,
+      "contactPerson": "Rahul & Ananya",
+      "phone": "+91 98765 43210",
+      "avatar": "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=150&auto=format&fit=crop&q=80",
+      "dietaryPreference": "Vegetarian",
+      "isAdmin": true
+    },
+    {
+      "id": "fam-2",
+      "name": "Patel Family",
+      "code": "1002",
+      "adultsCount": 2,
+      "childrenCount": 2,
+      "contactPerson": "Amit & Neha",
+      "phone": "+91 98765 43211",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80",
+      "dietaryPreference": "Jain Food"
+    },
+    {
+      "id": "fam-3",
+      "name": "Mehta Family",
+      "code": "1003",
+      "adultsCount": 2,
+      "childrenCount": 2,
+      "contactPerson": "Rajesh & Priya",
+      "phone": "+91 98765 43212",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+      "dietaryPreference": "Less Spicy"
+    },
+    {
+      "id": "fam-4",
+      "name": "Joshi Family",
+      "code": "1004",
+      "adultsCount": 2,
+      "childrenCount": 2,
+      "contactPerson": "Vikram & Sneha",
+      "phone": "+91 98765 43213",
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
+      "dietaryPreference": "Vegetarian"
+    },
+    {
+      "id": "fam-5",
+      "name": "Kapoor Family",
+      "code": "1005",
+      "adultsCount": 2,
+      "childrenCount": 2,
+      "contactPerson": "Karan & Pooja",
+      "phone": "+91 98765 43214",
+      "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
+      "dietaryPreference": "Extra Butter / Cheese lovers"
+    },
+    {
+      "id": "fam-6",
+      "name": "Gupta Family",
+      "code": "1006",
+      "adultsCount": 2,
+      "childrenCount": 2,
+      "contactPerson": "Sanjay & Ritu",
+      "phone": "+91 98765 43215",
+      "avatar": "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=150&auto=format&fit=crop&q=80",
+      "dietaryPreference": "No Onion No Garlic"
+    },
+    {
+      "id": "fam-7",
+      "name": "Verma Family",
+      "code": "1007",
+      "adultsCount": 2,
+      "childrenCount": 2,
+      "contactPerson": "Rohan & Kavita",
+      "phone": "+91 98765 43216",
+      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
+      "dietaryPreference": "Vegetarian"
+    }
+  ],
+  "events": [
+    {
+      "id": "evt-101",
+      "title": "Comedy Group Grand Weekend Gala Dinner",
+      "eventType": "Weekend Dinner",
+      "hostFamilyId": "fam-1",
+      "date": "2026-08-08",
+      "time": "20:00",
+      "restaurantName": "Saffron Royal Veg Bistro",
+      "address": "45 Emerald Heights, MG Road, Central Plaza",
+      "googleMapUrl": "https://maps.google.com/?q=Saffron+Royal+Veg+Bistro",
+      "orderDeadline": "2026-08-08T15:00",
+      "notes": "Private air-conditioned dining lounge reserved for Comedy Group! Please submit orders by 3 PM.",
+      "status": "upcoming",
+      "createdAt": "2026-08-01T10:00:00Z",
+      "createdByFamilyId": "fam-1"
+    },
+    {
+      "id": "evt-100",
+      "title": "Monsoon Beats & Dinner Party",
+      "eventType": "Festival Celebration",
+      "hostFamilyId": "fam-2",
+      "date": "2026-07-20",
+      "time": "19:30",
+      "restaurantName": "Spice & Heritage Garden",
+      "address": "12 Lake View Road, Green Park",
+      "googleMapUrl": "https://maps.google.com/?q=Spice+and+Heritage+Garden",
+      "orderDeadline": "2026-07-20T14:00",
+      "notes": "Celebrated the monsoon season with music and lavish dinner!",
+      "status": "completed",
+      "createdAt": "2026-07-15T09:00:00Z",
+      "createdByFamilyId": "fam-2",
+      "photos": [
+        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&auto=format&fit=crop&q=80",
+        "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600&auto=format&fit=crop&q=80"
+      ]
+    }
+  ],
+  "rsvps": [
+    {
+      "id": "rsvp-1",
+      "eventId": "evt-101",
+      "familyId": "fam-1",
+      "status": "Yes",
+      "adultsAttending": 2,
+      "childrenAttending": 2,
+      "updatedAt": "2026-08-01T11:00:00Z"
+    },
+    {
+      "id": "rsvp-2",
+      "eventId": "evt-101",
+      "familyId": "fam-2",
+      "status": "Yes",
+      "adultsAttending": 2,
+      "childrenAttending": 2,
+      "updatedAt": "2026-08-01T12:30:00Z"
+    },
+    {
+      "id": "rsvp-3",
+      "eventId": "evt-101",
+      "familyId": "fam-3",
+      "status": "Yes",
+      "adultsAttending": 2,
+      "childrenAttending": 1,
+      "updatedAt": "2026-08-01T14:15:00Z"
+    },
+    {
+      "id": "rsvp-4",
+      "eventId": "evt-101",
+      "familyId": "fam-4",
+      "status": "Yes",
+      "adultsAttending": 2,
+      "childrenAttending": 2,
+      "updatedAt": "2026-08-01T15:00:00Z"
+    },
+    {
+      "id": "rsvp-5",
+      "eventId": "evt-101",
+      "familyId": "fam-5",
+      "status": "Yes",
+      "adultsAttending": 2,
+      "childrenAttending": 2,
+      "updatedAt": "2026-08-01T16:20:00Z"
+    },
+    {
+      "id": "rsvp-6",
+      "eventId": "evt-101",
+      "familyId": "fam-6",
+      "status": "No",
+      "noReason": "Out of station",
+      "adultsAttending": 0,
+      "childrenAttending": 0,
+      "updatedAt": "2026-08-01T17:00:00Z"
+    },
+    {
+      "id": "rsvp-7",
+      "eventId": "evt-101",
+      "familyId": "fam-7",
+      "status": "Pending",
+      "adultsAttending": 0,
+      "childrenAttending": 0,
+      "updatedAt": "2026-08-01T10:00:00Z"
+    },
+    {
+      "id": "rsvp-100-1",
+      "eventId": "evt-100",
+      "familyId": "fam-1",
+      "status": "Yes",
+      "adultsAttending": 2,
+      "childrenAttending": 2,
+      "updatedAt": "2026-07-16T10:00:00Z"
+    },
+    {
+      "id": "rsvp-100-2",
+      "eventId": "evt-100",
+      "familyId": "fam-2",
+      "status": "Yes",
+      "adultsAttending": 2,
+      "childrenAttending": 2,
+      "updatedAt": "2026-07-16T10:00:00Z"
+    },
+    {
+      "id": "rsvp-100-3",
+      "eventId": "evt-100",
+      "familyId": "fam-3",
+      "status": "Yes",
+      "adultsAttending": 2,
+      "childrenAttending": 2,
+      "updatedAt": "2026-07-16T10:00:00Z"
+    },
+    {
+      "id": "rsvp-100-4",
+      "eventId": "evt-100",
+      "familyId": "fam-4",
+      "status": "Yes",
+      "adultsAttending": 2,
+      "childrenAttending": 1,
+      "updatedAt": "2026-07-16T10:00:00Z"
+    },
+    {
+      "id": "rsvp-100-5",
+      "eventId": "evt-100",
+      "familyId": "fam-5",
+      "status": "Yes",
+      "adultsAttending": 2,
+      "childrenAttending": 2,
+      "updatedAt": "2026-07-16T10:00:00Z"
+    },
+    {
+      "id": "rsvp-100-6",
+      "eventId": "evt-100",
+      "familyId": "fam-6",
+      "status": "Yes",
+      "adultsAttending": 2,
+      "childrenAttending": 2,
+      "updatedAt": "2026-07-16T10:00:00Z"
+    },
+    {
+      "id": "rsvp-100-7",
+      "eventId": "evt-100",
+      "familyId": "fam-7",
+      "status": "No",
+      "noReason": "Sick",
+      "adultsAttending": 0,
+      "childrenAttending": 0,
+      "updatedAt": "2026-07-16T10:00:00Z"
+    }
+  ],
+  "menuItems": [
+    {
+      "id": "item-1",
+      "name": "Masala Papad",
+      "category": "Starter",
+      "price": 60,
+      "isVegetarian": true,
+      "isJainAvailable": true,
+      "isPopular": true
+    },
+    {
+      "id": "item-2",
+      "name": "Roasted Papad",
+      "category": "Starter",
+      "price": 40,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-3",
+      "name": "Fry Papad",
+      "category": "Starter",
+      "price": 45,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-4",
+      "name": "Tomato Soup",
+      "category": "Starter",
+      "price": 140,
+      "isVegetarian": true,
+      "isJainAvailable": true,
+      "isPopular": true
+    },
+    {
+      "id": "item-5",
+      "name": "Manchow Soup",
+      "category": "Starter",
+      "price": 150,
+      "isVegetarian": true,
+      "isJainAvailable": false,
+      "isPopular": true
+    },
+    {
+      "id": "item-6",
+      "name": "Sweet Corn Soup",
+      "category": "Starter",
+      "price": 150,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-7",
+      "name": "Hot & Sour Soup",
+      "category": "Starter",
+      "price": 150,
+      "isVegetarian": true,
+      "isJainAvailable": false
+    },
+    {
+      "id": "item-8",
+      "name": "Paneer Chilli",
+      "category": "Starter",
+      "price": 260,
+      "isVegetarian": true,
+      "isJainAvailable": true,
+      "isPopular": true
+    },
+    {
+      "id": "item-9",
+      "name": "Paneer Tikka",
+      "category": "Starter",
+      "price": 280,
+      "isVegetarian": true,
+      "isJainAvailable": true,
+      "isPopular": true
+    },
+    {
+      "id": "item-10",
+      "name": "Veg Crispy",
+      "category": "Starter",
+      "price": 230,
+      "isVegetarian": true,
+      "isJainAvailable": false
+    },
+    {
+      "id": "item-11",
+      "name": "Veg Manchurian",
+      "category": "Starter",
+      "price": 220,
+      "isVegetarian": true,
+      "isJainAvailable": false
+    },
+    {
+      "id": "item-12",
+      "name": "French Fries",
+      "category": "Starter",
+      "price": 160,
+      "isVegetarian": true,
+      "isJainAvailable": true,
+      "isPopular": true
+    },
+    {
+      "id": "item-13",
+      "name": "Paneer Butter Masala",
+      "category": "Main Course",
+      "price": 320,
+      "isVegetarian": true,
+      "isJainAvailable": true,
+      "isPopular": true
+    },
+    {
+      "id": "item-14",
+      "name": "Kadai Paneer",
+      "category": "Main Course",
+      "price": 310,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-15",
+      "name": "Veg Kolhapuri",
+      "category": "Main Course",
+      "price": 290,
+      "isVegetarian": true,
+      "isJainAvailable": false
+    },
+    {
+      "id": "item-16",
+      "name": "Veg Handi",
+      "category": "Main Course",
+      "price": 280,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-17",
+      "name": "Mix Veg",
+      "category": "Main Course",
+      "price": 260,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-18",
+      "name": "Dal Fry",
+      "category": "Main Course",
+      "price": 210,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-19",
+      "name": "Dal Tadka",
+      "category": "Main Course",
+      "price": 230,
+      "isVegetarian": true,
+      "isJainAvailable": false,
+      "isPopular": true
+    },
+    {
+      "id": "item-20",
+      "name": "Jeera Aloo",
+      "category": "Main Course",
+      "price": 220,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-21",
+      "name": "Plain Roti",
+      "category": "Roti Section",
+      "price": 30,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-22",
+      "name": "Butter Roti",
+      "category": "Roti Section",
+      "price": 35,
+      "isVegetarian": true,
+      "isJainAvailable": true,
+      "isPopular": true
+    },
+    {
+      "id": "item-23",
+      "name": "Chapati",
+      "category": "Roti Section",
+      "price": 25,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-24",
+      "name": "Plain Naan",
+      "category": "Roti Section",
+      "price": 50,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-25",
+      "name": "Butter Naan",
+      "category": "Roti Section",
+      "price": 60,
+      "isVegetarian": true,
+      "isJainAvailable": true,
+      "isPopular": true
+    },
+    {
+      "id": "item-26",
+      "name": "Butter Kulcha",
+      "category": "Roti Section",
+      "price": 65,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-27",
+      "name": "Garlic Naan",
+      "category": "Roti Section",
+      "price": 75,
+      "isVegetarian": true,
+      "isJainAvailable": false,
+      "isPopular": true
+    },
+    {
+      "id": "item-28",
+      "name": "Tandoori Roti",
+      "category": "Roti Section",
+      "price": 35,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-29",
+      "name": "Plain Rice",
+      "category": "Rice Section",
+      "price": 160,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-30",
+      "name": "Jeera Rice",
+      "category": "Rice Section",
+      "price": 180,
+      "isVegetarian": true,
+      "isJainAvailable": true,
+      "isPopular": true
+    },
+    {
+      "id": "item-31",
+      "name": "Veg Biryani",
+      "category": "Rice Section",
+      "price": 260,
+      "isVegetarian": true,
+      "isJainAvailable": false,
+      "isPopular": true
+    },
+    {
+      "id": "item-32",
+      "name": "Steam Rice",
+      "category": "Rice Section",
+      "price": 150,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-33",
+      "name": "Dal Khichdi",
+      "category": "Rice Section",
+      "price": 220,
+      "isVegetarian": true,
+      "isJainAvailable": true,
+      "isPopular": true
+    },
+    {
+      "id": "item-34",
+      "name": "Ice Cream",
+      "category": "Dessert",
+      "price": 120,
+      "isVegetarian": true,
+      "isJainAvailable": true,
+      "isPopular": true
+    },
+    {
+      "id": "item-35",
+      "name": "Gulab Jamun",
+      "category": "Dessert",
+      "price": 90,
+      "isVegetarian": true,
+      "isJainAvailable": true,
+      "isPopular": true
+    },
+    {
+      "id": "item-36",
+      "name": "Brownie",
+      "category": "Dessert",
+      "price": 180,
+      "isVegetarian": true,
+      "isJainAvailable": false
+    },
+    {
+      "id": "item-37",
+      "name": "Rabdi",
+      "category": "Dessert",
+      "price": 140,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-38",
+      "name": "Water",
+      "category": "Drinks",
+      "price": 30,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-39",
+      "name": "Soft Drink",
+      "category": "Drinks",
+      "price": 50,
+      "isVegetarian": true,
+      "isJainAvailable": true
+    },
+    {
+      "id": "item-40",
+      "name": "Lime Soda",
+      "category": "Drinks",
+      "price": 80,
+      "isVegetarian": true,
+      "isJainAvailable": true,
+      "isPopular": true
+    },
+    {
+      "id": "item-41",
+      "name": "Buttermilk",
+      "category": "Drinks",
+      "price": 60,
+      "isVegetarian": true,
+      "isJainAvailable": true,
+      "isPopular": true
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord-1",
+      "eventId": "evt-101",
+      "familyId": "fam-1",
+      "items": [
+        {
+          "menuItemId": "item-1",
+          "itemName": "Masala Papad",
+          "category": "Starter",
+          "quantity": 2
+        },
+        {
+          "menuItemId": "item-4",
+          "itemName": "Tomato Soup",
+          "category": "Starter",
+          "quantity": 2
+        },
+        {
+          "menuItemId": "item-8",
+          "itemName": "Paneer Chilli",
+          "category": "Starter",
+          "quantity": 1
+        },
+        {
+          "menuItemId": "item-13",
+          "itemName": "Paneer Butter Masala",
+          "category": "Main Course",
+          "quantity": 2
+        },
+        {
+          "menuItemId": "item-19",
+          "itemName": "Dal Tadka",
+          "category": "Main Course",
+          "quantity": 1
+        },
+        {
+          "menuItemId": "item-22",
+          "itemName": "Butter Roti",
+          "category": "Roti Section",
+          "quantity": 8
+        },
+        {
+          "menuItemId": "item-25",
+          "itemName": "Butter Naan",
+          "category": "Roti Section",
+          "quantity": 4
+        },
+        {
+          "menuItemId": "item-30",
+          "itemName": "Jeera Rice",
+          "category": "Rice Section",
+          "quantity": 1
+        },
+        {
+          "menuItemId": "item-34",
+          "itemName": "Ice Cream",
+          "category": "Dessert",
+          "quantity": 4
+        },
+        {
+          "menuItemId": "item-41",
+          "itemName": "Buttermilk",
+          "category": "Drinks",
+          "quantity": 2
+        }
+      ],
+      "specialInstructions": "Less spicy for kids. Extra butter on Naan.",
+      "submittedAt": "2026-08-01T11:15:00Z"
+    },
+    {
+      "id": "ord-2",
+      "eventId": "evt-101",
+      "familyId": "fam-2",
+      "items": [
+        {
+          "menuItemId": "item-1",
+          "itemName": "Masala Papad",
+          "category": "Starter",
+          "quantity": 2
+        },
+        {
+          "menuItemId": "item-4",
+          "itemName": "Tomato Soup",
+          "category": "Starter",
+          "quantity": 2
+        },
+        {
+          "menuItemId": "item-9",
+          "itemName": "Paneer Tikka",
+          "category": "Starter",
+          "quantity": 1
+        },
+        {
+          "menuItemId": "item-13",
+          "itemName": "Paneer Butter Masala",
+          "category": "Main Course",
+          "quantity": 2
+        },
+        {
+          "menuItemId": "item-18",
+          "itemName": "Dal Fry",
+          "category": "Main Course",
+          "quantity": 1
+        },
+        {
+          "menuItemId": "item-22",
+          "itemName": "Butter Roti",
+          "category": "Roti Section",
+          "quantity": 10
+        },
+        {
+          "menuItemId": "item-25",
+          "itemName": "Butter Naan",
+          "category": "Roti Section",
+          "quantity": 2
+        },
+        {
+          "menuItemId": "item-30",
+          "itemName": "Jeera Rice",
+          "category": "Rice Section",
+          "quantity": 1
+        },
+        {
+          "menuItemId": "item-35",
+          "itemName": "Gulab Jamun",
+          "category": "Dessert",
+          "quantity": 4
+        }
+      ],
+      "specialInstructions": "Jain food preparation (no onion, no garlic).",
+      "submittedAt": "2026-08-01T12:45:00Z"
+    },
+    {
+      "id": "ord-3",
+      "eventId": "evt-101",
+      "familyId": "fam-3",
+      "items": [
+        {
+          "menuItemId": "item-1",
+          "itemName": "Masala Papad",
+          "category": "Starter",
+          "quantity": 2
+        },
+        {
+          "menuItemId": "item-5",
+          "itemName": "Manchow Soup",
+          "category": "Starter",
+          "quantity": 2
+        },
+        {
+          "menuItemId": "item-12",
+          "itemName": "French Fries",
+          "category": "Starter",
+          "quantity": 1
+        },
+        {
+          "menuItemId": "item-14",
+          "itemName": "Kadai Paneer",
+          "category": "Main Course",
+          "quantity": 2
+        },
+        {
+          "menuItemId": "item-22",
+          "itemName": "Butter Roti",
+          "category": "Roti Section",
+          "quantity": 8
+        },
+        {
+          "menuItemId": "item-27",
+          "itemName": "Garlic Naan",
+          "category": "Roti Section",
+          "quantity": 3
+        },
+        {
+          "menuItemId": "item-31",
+          "itemName": "Veg Biryani",
+          "category": "Rice Section",
+          "quantity": 1
+        },
+        {
+          "menuItemId": "item-40",
+          "itemName": "Lime Soda",
+          "category": "Drinks",
+          "quantity": 2
+        }
+      ],
+      "specialInstructions": "Medium spicy please.",
+      "submittedAt": "2026-08-01T14:30:00Z"
+    },
+    {
+      "id": "ord-100-1",
+      "eventId": "evt-100",
+      "familyId": "fam-1",
+      "items": [
+        {
+          "menuItemId": "item-1",
+          "itemName": "Masala Papad",
+          "category": "Starter",
+          "quantity": 2
+        },
+        {
+          "menuItemId": "item-13",
+          "itemName": "Paneer Butter Masala",
+          "category": "Main Course",
+          "quantity": 2
+        },
+        {
+          "menuItemId": "item-22",
+          "itemName": "Butter Roti",
+          "category": "Roti Section",
+          "quantity": 8
+        },
+        {
+          "menuItemId": "item-30",
+          "itemName": "Jeera Rice",
+          "category": "Rice Section",
+          "quantity": 1
+        }
+      ],
+      "specialInstructions": "Extra gravy.",
+      "submittedAt": "2026-07-16T11:00:00Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1",
+      "title": "New Dinner Event Announcement!",
+      "message": "Sharma Family invited Comedy Group to Weekend Gala Dinner at Saffron Royal Veg Bistro.",
+      "type": "event_created",
+      "eventId": "evt-101",
+      "createdAt": "2026-08-01T10:00:00Z",
+      "readByFamilies": [
+        "fam-1",
+        "fam-2"
+      ]
+    },
+    {
+      "id": "notif-2",
+      "title": "Food Order Deadline Approaching",
+      "message": "Please submit your RSVP and food orders for Saffron Royal Veg Bistro before 3:00 PM today.",
+      "type": "reminder",
+      "eventId": "evt-101",
+      "createdAt": "2026-08-02T08:00:00Z",
+      "readByFamilies": [
+        "fam-1"
+      ]
+    }
+  ]
+}

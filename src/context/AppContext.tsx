@@ -61,9 +61,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [data, setData] = useState<InitialData>(GET_INITIAL_DATA());
   const [currentFamily, setCurrentFamilyState] = useState<Family | null>(null);
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
-    return localStorage.getItem('comedy_group_is_logged_in') === 'true';
-  });
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [activeEventId, setActiveEventId] = useState<string | null>(null);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -91,12 +89,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         const storeData = await res.json();
         setData(storeData);
       } else {
-        const local = localStorage.getItem('comedy_group_store');
-        if (local) setData(JSON.parse(local));
+        // No server store available; initialize with built-in initial data
+        setData(GET_INITIAL_DATA());
       }
     } catch (err) {
-      const local = localStorage.getItem('comedy_group_store');
-      if (local) setData(JSON.parse(local));
+      // On error, fall back to built-in initial data
+      setData(GET_INITIAL_DATA());
     } finally {
       setIsLoading(false);
     }
@@ -109,13 +107,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Set default current family to Sharma Family (Admin) if none selected
   useEffect(() => {
     if (data.families.length > 0 && !currentFamily) {
-      const savedFamId = localStorage.getItem('comedy_group_current_family_id');
-      const found = data.families.find((f) => f.id === savedFamId);
-      if (found) {
-        setCurrentFamilyState(found);
-      } else {
-        setCurrentFamilyState(data.families[0]); // Sharma Family
-      }
+      setCurrentFamilyState(data.families[0]); // default to first family
     }
   }, [data.families, currentFamily]);
 
@@ -133,24 +125,44 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const setCurrentFamily = (family: Family | null) => {
     setCurrentFamilyState(family);
-    if (family) {
-      localStorage.setItem('comedy_group_current_family_id', family.id);
-    } else {
-      localStorage.removeItem('comedy_group_current_family_id');
-    }
   };
 
   const syncData = async (newData: InitialData) => {
     setData(newData);
-    localStorage.setItem('comedy_group_store', JSON.stringify(newData));
-    try {
-      await fetch('/api/store', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newData),
-      });
-    } catch (err) {
-      console.warn('API sync failed, saved locally:', err);
+    // Persist to Supabase (client) when available. Fallback to server API.
+    if (supabase) {
+      try {
+        const { error } = await supabase.from('app_store').upsert({ id: 'singleton', data: newData }, { returning: 'minimal' });
+        if (error) {
+          console.warn('Supabase client upsert error, falling back to API:', error);
+          await fetch('/api/store', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newData),
+          });
+        }
+      } catch (err) {
+        console.warn('Supabase client save failed, falling back to API:', err);
+        try {
+          await fetch('/api/store', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newData),
+          });
+        } catch (e) {
+          console.warn('API sync failed as well:', e);
+        }
+      }
+    } else {
+      try {
+        await fetch('/api/store', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newData),
+        });
+      } catch (err) {
+        console.warn('API sync failed:', err);
+      }
     }
   };
 
@@ -423,8 +435,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     if (isValid) {
       setCurrentFamilyState(target);
       setIsLoggedIn(true);
-      localStorage.setItem('comedy_group_is_logged_in', 'true');
-      localStorage.setItem('comedy_group_current_family_id', target.id);
+      // Do not persist login or current family to localStorage
       return { success: true };
     } else {
       return {
@@ -436,7 +447,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   const logout = () => {
     setIsLoggedIn(false);
-    localStorage.removeItem('comedy_group_is_logged_in');
   };
 
   const addFamily = (famData: Omit<Family, 'id'>) => {
@@ -518,11 +528,25 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const resetAllData = async () => {
     const initial = GET_INITIAL_DATA();
     setData(initial);
-    localStorage.removeItem('comedy_group_store');
-    try {
-      await fetch('/api/store/reset', { method: 'POST' });
-    } catch (err) {
-      console.error(err);
+    // Persist reset to Supabase if available, else call server reset
+    if (supabase) {
+      try {
+        const { error } = await supabase.from('app_store').upsert({ id: 'singleton', data: initial }, { returning: 'minimal' });
+        if (error) console.error('Supabase reset upsert error:', error);
+      } catch (err) {
+        console.error('Supabase reset failed, calling server reset:', err);
+        try {
+          await fetch('/api/store/reset', { method: 'POST' });
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    } else {
+      try {
+        await fetch('/api/store/reset', { method: 'POST' });
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
 
