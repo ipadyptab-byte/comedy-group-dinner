@@ -1,6 +1,5 @@
 import dotenv from 'dotenv';
 import { createClient } from '@supabase/supabase-js';
-import { GET_INITIAL_DATA } from '../src/initialData';
 
 dotenv.config();
 
@@ -24,10 +23,11 @@ export default async function handler(req: any, res: any) {
       return;
     }
     if (!data || !(data as any).data) {
-      const initial = GET_INITIAL_DATA();
-      res.status(200).json(initial);
-      return;
-    }
+  res.status(404).json({
+    error: 'No app_store record found'
+  });
+  return;
+} 
     res.status(200).json((data as any).data);
     return;
   }
